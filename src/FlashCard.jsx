@@ -9,7 +9,7 @@ function FlashCard({card,isFlipped,onFlip}){
                     </div>
                     <div className="flip-card-face flip-card-back">
                         <span className="label">ANSWER</span>
-                        <p>{card.answer}</p>
+                        <h2>{card.answer}</h2>
                         <pre>{card.code}</pre>
                     </div>
                 </div>
