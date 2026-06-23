@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import cards from './cards.jsx'
 import FlashCard from './FlashCard.jsx';
 import Navigationcontrols from './Navigationcontrols.jsx';
@@ -8,10 +8,16 @@ import ResultsView from './ResultsView.jsx';
 function App(){
   const [isFlipped,setIsFlipped] = useState(false);
   const [currentIndex,setCurrentIndex] = useState(0);
-  const [masteredCount, setMasteredCount] = useState(0);
+  const [masteredCount, setMasteredCount] = useState(()=>{
+    const saved = localStorage.getItem('mastered-score');
+    const parsed = Number(saved);
+    return Number.isNaN(parsed)?0:parsed;
+  });
   const [quizFinished,setQuizFinished] = useState(false)
   const card = cards[currentIndex]
-
+useEffect(()=>{
+  localStorage.setItem('mastered-score',masteredCount)
+},[masteredCount])
   function handleflip(){
     setIsFlipped(!isFlipped)
   }
