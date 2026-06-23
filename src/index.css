@@ -32,12 +32,12 @@
   backface-visibility: hidden;
 }
 .flip-card-front{
-    background-color:rgb(213, 233, 247);
+    background-color:rgb(230, 239, 245);
     border: 1px solid rgba(0, 0, 0, 0.315);
     border-radius: 5px;
 }
 .flip-card-back{
-    background: #14b5ff;
+    background: #418beb;
     transform: rotateY(180deg);
 }
 pre{
@@ -109,4 +109,117 @@ pre{
 .review {
   background: #fce425;
   color: #716500;
+}
+.progress-header{
+    max-width: 600px;
+    margin: 0 auto 24px;
+}
+.progress-header-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.card-counter{
+    font-size: 14px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.card-counter{
+    font-size: 14px;
+    font-weight: 500;
+    color: #3c494d;
+    letter-spacing: 0.05em;
+}
+.score-badge{
+  font-size: 14px;
+  font-weight: 600;
+  background: #fce425;
+  color: #716500;
+  padding: 4px 12px;
+  border-radius: 9999px;
+}
+.progress-bar-track{
+  width: 30%;
+  height: 8px;
+  background: #d3e4fe;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: #00687b;
+  border-radius: 9999px;
+  transition: 0.5s ease;
+}
+.mastery-label{
+    display: block;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #3c494d;
+}
+.results-view {
+  max-width: 500px;
+  margin: 60px auto;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #bbc9ce;
+  border-radius: 16px;
+  padding: 40px 24px;
+}
+.results-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0d3e75;
+  margin-bottom: 8px;
+}
+.results-subtitle {
+  color: #3c494d;
+  margin-bottom: 32px;
+}
+.results-stats{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.stat-card {
+  width: 180px;
+  height:100px;
+  background: #e5eeff;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  text-align: left;
+}
+.stat-label {
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #00687b;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0b1c30;
+}
+.restart-button {
+    margin-top: 20px;
+  width: 100%;
+  padding: 16px;
+  background: #00687b;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition:  0.15s ease;
+}
+.restart-button:active {
+  transform: scale(0.95);
 }
