@@ -8,21 +8,26 @@ import ResultsView from './ResultsView.jsx';
 function App(){
   const [isFlipped,setIsFlipped] = useState(false);
   const [currentIndex,setCurrentIndex] = useState(0);
-  const [masteredCount, setMasteredCount] = useState(()=>{
-    const saved = localStorage.getItem('mastered-score');
-    const parsed = Number(saved);
-    return Number.isNaN(parsed)?0:parsed;
-  });
+ const [masteredCards, setMasteredCards] = useState(()=>{
+  const saved = localStorage.getItem('mastered-score');
+  try {
+    const parsed = JSON.parse(saved);
+    return Array.isArray(parsed) ? new Set(parsed) : new Set();
+  } catch {
+    return new Set();
+  }
+});
   const [quizFinished,setQuizFinished] = useState(false)
   const card = cards[currentIndex]
+  const masteredCount = masteredCards.size;
 useEffect(()=>{
-  localStorage.setItem('mastered-score',masteredCount)
-},[masteredCount])
+  localStorage.setItem('mastered-score',JSON.stringify([...masteredCards]))
+},[masteredCards])
   function handleflip(){
     setIsFlipped(!isFlipped)
   }
   function markMastered(){
-    setMasteredCount(masteredCount + 1);
+    setMasteredCards(m=>new Set(m).add(currentIndex));
     handleNext();
   }
   function markNeedsReview(){
@@ -46,7 +51,7 @@ useEffect(()=>{
   function restartQuiz(){
     setCurrentIndex(0)
     setIsFlipped(false)
-    setMasteredCount(0)
+    setMasteredCards(new Set())
     setQuizFinished(false)
   }
   if(quizFinished){
